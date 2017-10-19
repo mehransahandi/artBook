@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class InfoVC: UIViewController , UIImagePickerControllerDelegate , UINavigationControllerDelegate {
 
@@ -39,6 +40,33 @@ class InfoVC: UIViewController , UIImagePickerControllerDelegate , UINavigationC
     }
     
     @IBAction func BTNSavePressed(_ sender: Any) {
+        
+        // core data
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        // connect to coreData model created ANd USING THIS WE CAN INSERT TO DATABASE
+        let newArt = NSEntityDescription.insertNewObject(forEntityName: "Painting", into: context)
+        
+        newArt.setValue(TXTArtName.text, forKey: "artName")
+        newArt.setValue(TXTArtistName.text, forKey: "artist")
+        // convert string to int
+        if let yeartext = Int(TXTYear.text!) {
+            newArt.setValue(yeartext, forKey: "year")
+            
+        }
+        // convert image to data
+        if let data = UIImageJPEGRepresentation(ImageView.image!, 0.5){
+            
+            newArt.setValue(data, forKey: "image")
+        }
+        // save
+        do {
+            try context.save()
+             print("done")
+        } catch {
+            
+            print("error")
+        }
         
         
     }
