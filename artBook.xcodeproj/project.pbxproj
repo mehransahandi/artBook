@@ -8,22 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		B493781E1F98C7A700B913A4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B493781D1F98C7A700B913A4 /* AppDelegate.swift */; };
-		B49378201F98C7A700B913A4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B493781F1F98C7A700B913A4 /* ViewController.swift */; };
+		B49378201F98C7A700B913A4 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B493781F1F98C7A700B913A4 /* MainVC.swift */; };
 		B49378231F98C7A700B913A4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B49378211F98C7A700B913A4 /* Main.storyboard */; };
 		B49378261F98C7A700B913A4 /* artBook.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B49378241F98C7A700B913A4 /* artBook.xcdatamodeld */; };
 		B49378281F98C7A700B913A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B49378271F98C7A700B913A4 /* Assets.xcassets */; };
 		B493782B1F98C7A700B913A4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B49378291F98C7A700B913A4 /* LaunchScreen.storyboard */; };
+		B49378331F98C9AE00B913A4 /* InfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49378321F98C9AE00B913A4 /* InfoVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		B493781A1F98C7A700B913A4 /* artBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = artBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B493781D1F98C7A700B913A4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B493781F1F98C7A700B913A4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B493781F1F98C7A700B913A4 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		B49378221F98C7A700B913A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B49378251F98C7A700B913A4 /* artBook.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = artBook.xcdatamodel; sourceTree = "<group>"; };
 		B49378271F98C7A700B913A4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B493782A1F98C7A700B913A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B493782C1F98C7A700B913A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B49378321F98C9AE00B913A4 /* InfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,12 +59,13 @@
 			isa = PBXGroup;
 			children = (
 				B493781D1F98C7A700B913A4 /* AppDelegate.swift */,
-				B493781F1F98C7A700B913A4 /* ViewController.swift */,
+				B493781F1F98C7A700B913A4 /* MainVC.swift */,
 				B49378211F98C7A700B913A4 /* Main.storyboard */,
 				B49378271F98C7A700B913A4 /* Assets.xcassets */,
 				B49378291F98C7A700B913A4 /* LaunchScreen.storyboard */,
 				B493782C1F98C7A700B913A4 /* Info.plist */,
 				B49378241F98C7A700B913A4 /* artBook.xcdatamodeld */,
+				B49378321F98C9AE00B913A4 /* InfoVC.swift */,
 			);
 			path = artBook;
 			sourceTree = "<group>";
@@ -139,7 +142,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B49378201F98C7A700B913A4 /* ViewController.swift in Sources */,
+				B49378331F98C9AE00B913A4 /* InfoVC.swift in Sources */,
+				B49378201F98C7A700B913A4 /* MainVC.swift in Sources */,
 				B49378261F98C7A700B913A4 /* artBook.xcdatamodeld in Sources */,
 				B493781E1F98C7A700B913A4 /* AppDelegate.swift in Sources */,
 			);
