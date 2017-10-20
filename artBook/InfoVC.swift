@@ -15,6 +15,10 @@ class InfoVC: UIViewController , UIImagePickerControllerDelegate , UINavigationC
     @IBOutlet weak var TXTArtName: UITextField!
     @IBOutlet weak var TXTArtistName: UITextField!
     @IBOutlet weak var TXTYear: UITextField!
+    @IBOutlet weak var BTNSave: UIButton!
+    
+    var selectedPainting = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,6 +26,59 @@ class InfoVC: UIViewController , UIImagePickerControllerDelegate , UINavigationC
       
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(InfoVC.imageselction))
         ImageView.addGestureRecognizer(gestureRecognizer)
+        ///////////////
+        if selectedPainting != ""{
+            let appdeligate = UIApplication.shared.delegate as! AppDelegate
+            let contecx = appdeligate.persistentContainer.viewContext
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Painting")
+            
+            fetchRequest.predicate = NSPredicate(format: "artName = %@", self.selectedPainting)
+            
+            fetchRequest.returnsObjectsAsFaults = false
+            
+            do{
+                
+                let results = try contecx.fetch(fetchRequest)
+                if results.count>0{
+                    
+                    for result in results as! [NSManagedObject] {
+                        
+                        if let artName = result.value(forKey: "artName") as? String {
+                            
+                            TXTArtName.text = artName
+                        }
+                        
+                        if let year = result.value(forKey: "year") as? Int {
+                            TXTYear.text = String(year)
+                        }
+                        
+                        if let artistName = result.value(forKey: "artist") as? String {
+                            TXTArtistName.text = artistName
+                            
+                        }
+                        
+                        if let imagedata = result.value(forKey: "image") as? Data {
+                            
+                            let image = UIImage(data:imagedata)
+                            self.ImageView.image = image
+                            
+                        }
+                        
+                        
+                    }// for
+                    BTNSave.isHidden = true
+                    
+                } // if
+                
+            } catch {
+                
+                print("erorr data fetch")
+            }
+            
+            
+            
+        }
+       // fetchselected()
     }
 
     
@@ -38,6 +95,19 @@ class InfoVC: UIViewController , UIImagePickerControllerDelegate , UINavigationC
          ImageView.image = info[UIImagePickerControllerEditedImage] as? UIImage
         self.dismiss(animated: true, completion: nil)
     }
+    
+    
+    // fetchselected function
+    func fetchselected()  {
+        
+    }
+    
+    
+    
+    
+    
+    
+    // save process
     
     @IBAction func BTNSavePressed(_ sender: Any) {
         
@@ -62,7 +132,10 @@ class InfoVC: UIViewController , UIImagePickerControllerDelegate , UINavigationC
         // save
         do {
             try context.save()
-             print("done")
+            // after save sent back to first view
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue : "newPainting"), object: nil) // send mesage to vc
+             self.navigationController?.popViewController(animated: true)
+            
         } catch {
             
             print("error")

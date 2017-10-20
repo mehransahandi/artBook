@@ -104,6 +104,7 @@
                         <viewLayoutGuide key="safeArea" id="rh0-DF-pTh"/>
                     </view>
                     <connections>
+                        <outlet property="BTNSave" destination="RFg-j3-FU2" id="IJG-SX-MZf"/>
                         <outlet property="ImageView" destination="BqU-U1-6N3" id="rKI-GX-Xdm"/>
                         <outlet property="TXTArtName" destination="Dcl-jB-kDu" id="jAG-4M-JWY"/>
                         <outlet property="TXTArtistName" destination="W9A-ly-Su3" id="BXV-j1-qDa"/>

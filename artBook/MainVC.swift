@@ -17,16 +17,24 @@ class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     var year = [Int]()
     var image = [UIImage]()
     
+    var selectedPainting = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     tableView.delegate = self
         tableView.dataSource = self
-     getinfo()
+     
+        getinfo()
+    }
+    // refresh after save
+    override func viewWillAppear(_ animated: Bool) {
+        NotificationCenter.default.addObserver(self, selector: #selector(MainVC.getinfo), name: NSNotification.Name(rawValue : "newPainting"), object: nil)
     }
     
+    
     //retrive information
-    func getinfo()  {
+    @objc func getinfo()  {
         
         artistName.removeAll(keepingCapacity: false)
         artName.removeAll(keepingCapacity: false)
@@ -91,8 +99,24 @@ class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         return cell
     }
     
+    // selected row to next page
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+       selectedPainting = artName[indexPath.row]
+        performSegue(withIdentifier: "ToInfoVC", sender: nil)
+    }
+    // send selected item with segue
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ToInfoVC" {
+            let destinationVC = segue.destination as! InfoVC
+            destinationVC.selectedPainting = selectedPainting
+            
+            
+        }
+    }
+    
     @IBAction func BTNAddPressed(_ sender: Any) {
-        
+        selectedPainting = ""
         performSegue(withIdentifier: "ToInfoVC", sender: nil)
         
     }
