@@ -40,6 +40,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="tableView" destination="4PS-Ma-5yJ" id="1OH-Jg-Tie"/>
                         <segue destination="xIb-PN-cwV" kind="show" identifier="ToInfoVC" id="oJI-NU-LXs"/>
                     </connections>
                 </viewController>
